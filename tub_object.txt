@@ -1,0 +1,60 @@
+desired_temp = 39 //hard-coded initially
+max_temp = 45 //check for a sensible value
+running = false
+
+
+construtor()
+// initiator
+  start_monitoring()
+
+destructor()
+  stop_monitoring()
+
+private stop_monitoring()
+  running = false
+  //stop the event handler
+
+private start_monitoring()
+  if (running)
+    exit // nothing to do as it is running so just exit
+
+  //our tub is full so deal with heating
+  switch_motor(on) //figure out later, unless it’s noisy
+  running = true
+  //TODO - create the event handler to monitor the tub (very language specific)
+  // bind function monitor() to the event handler
+
+//this is called by the event handler on a regular basis
+private monitor()
+  //check water level in tub
+  if (!is_tub_full())
+    if (!fill_tub())
+      //stop if we cannot fill the tub
+      exit()
+
+  if (tub_temp() >= desired_temp)
+    //tub is hot enough so circulate the water
+    switch_heater(0)
+  else
+    //tub is too cold so heat it
+    while ( tub_temp() < desired_temp)
+      switch_heater(100)
+
+
+//setters and getters (access functions)
+
+public set_desired_temp ( int temp )
+  if (temp <= max_temp )
+    desired_temp = temp
+
+public float get_outlet temp()
+
+public float get_inlet_temp()
+
+public int get_water_depth()
+
+public switch_tub_on()
+  start_monitoring()
+
+public switch_tub_off()
+  stop_monitoring()

@@ -1,0 +1,10 @@
+write some html and javascript for the interface
+
+understand how to bind together html, javascript and our python object to display the updated temperature every so often
+(maybe with some event handler in javascript)
+
+create the python tub object with temp getters only
+
+play with sensors
+
+that initiates a python object
